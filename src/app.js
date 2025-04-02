@@ -1,6 +1,21 @@
 const express=require('express')
 
 const app=express()
+
+app.use("/user/:params/:name/:password",(req,res)=>{
+    console.log(req.params);
+    res.send("dynamic routes...")
+})
+
+app.use("/user",(req,res)=>{
+    console.log(req.query);
+    res.send("accesing from request body")
+})
+
+
+
+
+
 //order of routers matters here ..keep / route at last,(use also) ..if anything matches /..it handles
 app.get("/test/2",(req,res)=>{
     res.send("abraka dabra...it only matches get call")
@@ -16,7 +31,8 @@ app.use("/test",(req,res)=>{
 app.get(/^\/ab?c$/, (req, res) => {
     res.send("abc  question testing..");
 });
-//+,*,/a/, /.*fl$/
+//hw/......
+//+,*,/a/, /.*fl$/,()
 app.get(/^\/ab+c$/, (req, res) => {
     res.send("abc  + testing..");
 });
