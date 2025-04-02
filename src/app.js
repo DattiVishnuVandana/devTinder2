@@ -13,7 +13,16 @@ app.use("/test/2",(req,res)=>{
 app.use("/test",(req,res)=>{
     res.send("hello")
 })//here /test/anything..handles but not /test345
-
+app.get(/^\/ab?c$/, (req, res) => {
+    res.send("abc  question testing..");
+});
+//+,*,/a/, /.*fl$/
+app.get(/^\/ab+c$/, (req, res) => {
+    res.send("abc  + testing..");
+});
+// app.get("/ab?c",(req,res)=>{
+//     res.send("abc testing..")
+// })//b is optional here(ac,abc..)
 app.use("/",(req,res)=>{
     res.send("hello this home")
 })
